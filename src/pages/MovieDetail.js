@@ -7,10 +7,14 @@ const MovieDetail = ({ movie, setMovie }) => {
     const navigate = useNavigate();
 
     const [movieItm, setMovieItm] = useState({});
+
+
     useEffect(() => {
         getMovie();
         console.log(55)
     }, [id]);
+
+
     const getMovie = async () => {
         const getmovie = await instance.get(`/movie/${id}`);
         const movieDetail = getmovie.data;
@@ -30,6 +34,7 @@ const MovieDetail = ({ movie, setMovie }) => {
                     <img src={"https://image.tmdb.org/t/p/original/" + movieItm.poster_path} />
                     <div>{movieItm.original_title}</div>
                     <p>{movieItm.overview}</p>
+                    <p>{movieItm.release_date}</p>
                     <div>
                         {
                             movieItm.genres ?

@@ -4,6 +4,7 @@ import { Form, Link, Route, Routes } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import './Movie.scss'
 import MovieDetail from './pages/MovieDetail';
+import Search from './pages/Search';
 
 
 const App = () => {
@@ -14,8 +15,9 @@ const App = () => {
   const [genrelist, setGenrelist] = useState([]);
 
 
+  const [searchInput, setSearchInput] = useState('');
 
-
+  const [search, setSearch] = useState();
 
   // [
   //   { "id": 28, "name": "액션" },
@@ -50,8 +52,13 @@ const App = () => {
       {
         movie ? <div>
 
+          <header>
+            <Link to="/">HOME</Link>
+          </header>
+
           <section>
-            <input /> <button >search</button>
+
+            <Search search={search} setSearch={setSearch} />
             <Routes>
 
               <Route path='/' element={
@@ -83,6 +90,9 @@ const App = () => {
                   movie={movie}
                   setMovie={setMovie}
                 />} />
+              <Route path={'/search/'} element={
+                <Search search={search} setSearch={setSearch} />
+              } />
             </Routes>
 
           </section>
