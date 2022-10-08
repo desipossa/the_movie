@@ -1,0 +1,25 @@
+body {
+    background: #333;
+    
+    .Wrap {
+        color: #f9f7fa;
+        .inner {
+            display: flex;
+            gap: 30px;
+            width: 1600px;
+            margin: 100px auto;
+
+            &.list {
+                flex-wrap: wrap;
+                figure {
+                    width: 8%;
+                }
+            }
+
+            &.detail {
+                width: 500px;
+                flex-direction: column;
+            }
+        }
+    }
+}
