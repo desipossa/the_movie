@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+.env로 민감한 정보 관리
+최상위 폴더(movie-app)에 .env 파일을 생성하여, 네이버 개발자 센터에서 발급 받은 ID와 SECRET을 아래와 같이 입력한다.
+(띄어쓰기 X)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+REACT_APP_CLIENT_ID=발급받은ID
+REACT_APP_CLIENT_SECRET=발급받은SECRET
+❗️ REACT_APP_은 예약어이기 때문에 변경하면 변수를 불러올 수 없다.
+❗️ .env 파일의 내용이 변경되면 서버를 다시 실행해야 반영된다.
+❗️ 정보가 노출되지 않도록 dev.js, .env 파일은 꼭 .gitignore에 포함한다.
 
-## Available Scripts
 
-In the project directory, you can run:
+서버에서 환경 변수(.env 파일)를 사용하기 위해 dotenv을 설치해준다.
 
-### `npm start`
+npm install dotenv --save
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+server>index.js에 dotenv를 불러온다.
 
-### `npm test`
+(server>index.js)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 5000;
+// dotenv
+require("dotenv").config();
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+//https://velog.io/@nemo/movie-search-app-1
